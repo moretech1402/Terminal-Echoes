@@ -15,6 +15,12 @@ class Stat(models.Model):
         return self.name
 
 class Character(models.Model):
-    user = models.ManyToOneRel(to=settings.AUTH_USER_MODEL)
-    name = models.CharField(max_length=100, null=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
     current_cell = models.ForeignKey(Cell, on_delete=models.SET_NULL, null=True, blank=True)
+    
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self) -> str:
+        return f"{self.name} (User: {self.user.username})"
