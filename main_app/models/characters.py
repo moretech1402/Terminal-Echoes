@@ -24,3 +24,15 @@ class Character(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name} (User: {self.user.username})"
+
+class CharacterStat(models.Model):
+    character = models.ForeignKey(Character, on_delete=models.CASCADE, related_name='stats')
+    stat = models.ForeignKey(Stat, on_delete=models.CASCADE)
+    value = models.IntegerField()
+    
+    class Meta:
+        unique_together = ['character', 'stat']
+        
+    def __str__(self) -> str:
+        return f"{self.character.name}'s {self.stat.name}: {self.value}"
+
