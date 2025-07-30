@@ -1,4 +1,7 @@
 from django.db import models
+from django.conf import settings
+
+from .location import Cell
 
 class Stat(models.Model):
     key = models.CharField(max_length=3, unique=True)
@@ -10,3 +13,8 @@ class Stat(models.Model):
     
     def __str__(self):
         return self.name
+
+class Character(models.Model):
+    user = models.ManyToOneRel(to=settings.AUTH_USER_MODEL)
+    name = models.CharField(max_length=100, null=False)
+    current_cell = models.ForeignKey(Cell, on_delete=models.SET_NULL, null=True, blank=True)
