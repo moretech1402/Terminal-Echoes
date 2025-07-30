@@ -1,4 +1,4 @@
-from main_app import models
+from django.db import models
 
 class Shop(models.Model):
     name = models.CharField(max_length=100)

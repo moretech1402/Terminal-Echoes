@@ -1,3 +1,3 @@
-from .base import Location, Cell, CellType
-from .game_objects import Shop, Chest, Monster
+from .location import *
+from .game_objects import *
 from .characters import *
