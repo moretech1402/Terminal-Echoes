@@ -21,13 +21,6 @@ class Cell(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE, null=False)
     x_coord = models.IntegerField()
     y_coord = models.IntegerField()
-    
-    cell_type = models.CharField(
-        max_length=2,
-        choices=CellType.choices,
-        default=CellType.EMPTY,
-    )
-    description = models.TextField(blank=True, null=True)
 
     # --- Generic Foreign Key ---
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True, blank=True)

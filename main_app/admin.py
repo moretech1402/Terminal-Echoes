@@ -27,15 +27,14 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Cell)
 class CellAdmin(admin.ModelAdmin):
-    list_display = ('location', 'x_coord', 'y_coord', 'cell_type', 'content_object')
-    list_filter = ('location', 'cell_type')
-    search_fields = ('description',)
-    fields = ('location', 'x_coord', 'y_coord', 'cell_type', 'description', 'content_type', 'object_id')
+    list_display = ('location', 'x_coord', 'y_coord', 'content_type')
+    list_filter = ('location', 'content_type')
+    fields = ('location', 'x_coord', 'y_coord', 'content_type', 'object_id')
 
 @admin.register(Stat)
 class StatAdmin(admin.ModelAdmin):
-    list_display = ('name', 'key')
-    search_fields = ('name', 'key')
+    list_display = ('key', 'name')
+    search_fields = ('key', 'name')
 
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
