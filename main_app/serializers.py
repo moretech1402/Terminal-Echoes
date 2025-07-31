@@ -52,7 +52,7 @@ class CellSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cell
-        fields = ['id', 'location', 'x_coord', 'y_coord', 'cell_type', 'content_object']
+        fields = ['id', 'location', 'x_coord', 'y_coord', 'content_object']
 
     def get_content_object(self, obj):
         if obj.content_object:
