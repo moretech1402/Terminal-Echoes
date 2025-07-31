@@ -1,5 +1,6 @@
+# type: ignore
+
 from django.contrib import admin
-from django.contrib.contenttypes.admin import GenericStackedInline
 from .models import *
 
 class CharacterStatInline(admin.TabularInline):
@@ -29,10 +30,7 @@ class CellAdmin(admin.ModelAdmin):
     list_display = ('location', 'x_coord', 'y_coord', 'cell_type', 'content_object')
     list_filter = ('location', 'cell_type')
     search_fields = ('description',)
-    # NO USES inlines = [ShopInline, ChestInline, MonsterInline] aquí.
-    # En su lugar, vamos a hacer que los campos de GenericForeignKey sean editables.
     fields = ('location', 'x_coord', 'y_coord', 'cell_type', 'description', 'content_type', 'object_id')
-    # readonly_fields = ('content_object',) # content_object es calculado, no guardado directamente
 
 @admin.register(Stat)
 class StatAdmin(admin.ModelAdmin):
